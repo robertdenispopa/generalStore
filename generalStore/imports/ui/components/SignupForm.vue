@@ -4,7 +4,7 @@
             
                 <label for="username">Username</label>
                 <input
-                    id="username"
+                    id="signUp_username"
                     name="username"
                     type="text"
                     placeholder="Username"
@@ -14,7 +14,7 @@
 
                 <label for="password">Password</label>
                 <input
-                    id="password"
+                    id="signUp_password"
                     name="password"
                     type="password"
                     placeholder="Password"

@@ -13,7 +13,7 @@
             <router-link to="/orders" class="item" >Orders</router-link>
           </div>
           <div>
-            <router-link to="/cart" class="item" v-if="currentUser.profile.usertype === 'Buyer'">Cart</router-link>
+            <router-link to="/history" class="item" v-if="currentUser.profile.usertype === 'Buyer'">History</router-link>
           </div>
           
           <router-link to="/profile" class="item">Profile</router-link>
