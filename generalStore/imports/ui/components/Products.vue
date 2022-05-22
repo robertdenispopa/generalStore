@@ -29,8 +29,47 @@
         </div>
     </div>
 </template>
-
-import Vue from "vue";
+<script>import Vue from "vue";
 import Product from "./Product.vue";
 import ProductForm from "./ProductForm.vue";
 import { ProductsCollection } from "../../api/collections/ProductsCollection.js";
+
+export default {
+    components: {
+        Product,
+        ProductForm
+    },
+    data() {
+        return {
+        };
+    },
+    methods: {
+        toggleHideCompleted() {
+        this.hideCompleted = !this.hideCompleted;
+    }
+    },
+    meteor: {
+    $subscribe: {
+    'products': []
+    },
+    products() {
+        const currentUser = Meteor.user();
+        const SellerFilter = currentUser? { userId: currentUser._id } : {};
+        
+        if(currentUser.profile.usertype === 'Seller'){
+            return ProductsCollection.find(
+                        SellerFilter,
+                        {
+                        sort: { createdAt: -1 },
+                        }
+                    ).fetch();
+        } else {
+            return ProductsCollection.find().fetch();
+        }
+    },
+    currentUser() {
+        return Meteor.user();
+    }
+}
+};
+</script>
