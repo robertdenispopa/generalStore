@@ -4,7 +4,7 @@
     <header>
       <div class="app-bar">
         <div class="app-header">
-          <h1>generalStore</h1>
+          <h1>GeneralStore</h1>
         </div>
         
         <div class="app-menu">
