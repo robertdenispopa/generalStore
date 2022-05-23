@@ -5,13 +5,12 @@
 
 ## In console:
 ```
-git clone https://github.com/robertdenispopa/generalStore
+
+$ git clone https://github.com/robertdenispopa/generalStore
 
 $ cd generalStore
 
 $ npm install -g meteor
-
-$ meteor npm install --save @babel/runtime
 
 $ meteor npm install --save @babel/runtime vue vue-meteor-tracker vue-router
 
