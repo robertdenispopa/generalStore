@@ -30,7 +30,7 @@
     </div>
 </template>
 <script>import Vue from "vue";
-import Product from "./Product.vue";
+import Product from "./Add-delete-product.vue";
 import ProductForm from "./ProductForm.vue";
 import { ProductsCollection } from "../../api/collections/ProductsCollection.js";
 
