@@ -20,8 +20,7 @@
 </template>
 
 <script>
-    import Vue from "vue";
-    import { ProductsCollection } from "../../api/collections/ProductsCollection.js";
+
     export default {
     data() {
         return {

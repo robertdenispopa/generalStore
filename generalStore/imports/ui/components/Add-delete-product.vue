@@ -31,7 +31,7 @@
                     userOfItem:this.product.userId
                 };
         
-            Meteor.call('cart.insert', toSend);
+            Meteor.call('history.insert', toSend);
         },
     },
     meteor:{

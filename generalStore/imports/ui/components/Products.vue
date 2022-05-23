@@ -29,10 +29,11 @@
         </div>
     </div>
 </template>
-<script>import Vue from "vue";
+<script>
+import Vue from "vue";
 import Product from "./Add-delete-product.vue";
 import ProductForm from "./ProductForm.vue";
-import { ProductsCollection } from "../../api/collections/ProductsCollection.js";
+import { ProductsCollection } from "/imports/api/collections/ProductsCollections";
 
 export default {
     components: {
