@@ -6,15 +6,19 @@
                 <span v-if="incompleteCount > 0">({{incompleteCount}})</span>
                 </h2>
             </div>
-            <div class="filter">
-                <button
+
+            <!-- <div class="filter">
+                <div
+
                     v-model="hideCompleted"
                     @click="toggleHideCompleted"
                     >
                 <span v-if="hideCompleted">Show All</span>
                 <span v-else>Hide Completed Orders</span>
-                </button>
-            </div>
+
+                </div>
+            </div> -->
+
             <div class="loading" v-if="!$subReady.orders">Loading...</div>
             <table class="products">
                 <tr>
@@ -39,7 +43,8 @@
 <script>
 import Vue from "vue";
 import Order from "./Order.vue";
-import { OrdersCollection } from "../../api/collections/OrdersCollection.js";
+import { OrdersCollection } from "/imports/api/collections/OrdersCollections";
+
 export default {
     components: {
         Order

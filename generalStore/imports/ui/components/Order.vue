@@ -14,8 +14,7 @@
 </template>
 
 <script>
-    import Vue from "vue";
-    import { OrdersCollection } from "../../api/collections/OrdersCollection.js";
+
     export default {
     props: ["order"],
         data() {
