@@ -35,3 +35,54 @@
         </div>
     </div>
 </template>
+
+<script>
+import Vue from "vue";
+import Order from "./Order.vue";
+import { OrdersCollection } from "../../api/collections/OrdersCollection.js";
+export default {
+    components: {
+        Order
+    },
+    data() {
+        return {
+        hideCompleted: false
+        };
+    },
+    methods: {
+        toggleHideCompleted() {
+        this.hideCompleted = !this.hideCompleted;
+    }
+    },
+    meteor: {
+    $subscribe: {
+    'orders': []
+    },
+    currentUser() {
+        return Meteor.user();
+    },
+    orders() {
+        if (!this.currentUser) {
+        return [];
+        }
+    
+        const hideCompletedFilter = { checked: { $ne: true } };
+        
+        const userFilter = this.currentUser ? { userId: this.currentUser._id } : {};
+        
+        const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter };
+        
+        return OrdersCollection.find(
+            this.hideCompleted ? pendingOnlyFilter : userFilter,
+            {
+            sort: { createdAt: -1 },
+            }
+        ).fetch();
+    },
+    incompleteCount() {
+    return OrdersCollection.find({ checked: { $ne: true }, userId: this.currentUser._id }).count();
+    },
+    
+}
+};
+</script>
