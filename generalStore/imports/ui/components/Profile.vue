@@ -29,12 +29,3 @@
     </div>
 </template>
 
-<script>
-export default {
-    meteor: {
-        currentUser() {
-        return Meteor.user();
-    }
-    }
-}
-</script>
