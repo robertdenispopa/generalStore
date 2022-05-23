@@ -23,9 +23,9 @@
                 <label>Phone:{{this.currentUser.profile.phone}}</label>
                 </div>
         </div>
-        <center><div class="input-container" @click="switchFunction()"> 
+       <!-- <center><div class="input-container" @click="switchFunction()"> 
             <button >Edit</button>
-        </div></center>
+        </div></center>-->
     </div>
 </template>
 
