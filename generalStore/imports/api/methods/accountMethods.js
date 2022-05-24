@@ -12,6 +12,8 @@ Meteor.methods({
                 profile: {
                     address: toSend.profile.address,
                     usertype: toSend.profile.usertype,
+                    fullname: toSend.profile.fullname,
+                    phone: toSend.profile.phone,
                 }
             });
         }

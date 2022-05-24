@@ -35,7 +35,7 @@
                     type="text"
                     placeholder="Fullname"
                     required
-                    v-model="toSend.profile.address"
+                    v-model="toSend.profile.fullname"
                 />
 
                 <label for="address">Address</label>
