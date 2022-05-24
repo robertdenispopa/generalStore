@@ -2,16 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { ProductsCollection } from '../imports/api/collections/ProductsCollections';
 import { OrdersCollection } from '../imports/api/collections/OrdersCollections';
-import { HistoryCollection } from '../imports/api/collections/HistoryCollections';
 
 import '../imports/api/methods/productsMethods';
 import '../imports/api/methods/ordersMethods';
-import '../imports/api/methods/historyMethods';
 import '../imports/api/methods/accountMethods';
 
 import '../imports/api/publications/productsPublications';
 import '../imports/api/publications/ordersPublications';
-import '../imports/api/publications/historyPublications';
 
 const insertProduct = (product, user) => 
     ProductsCollection.insert({ 

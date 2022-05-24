@@ -12,8 +12,8 @@
           <div v-if="currentUser.profile.usertype === 'Seller'"> 
             <router-link to="/orders" class="item" >Orders</router-link>
           </div>
-          <div>
-            <router-link to="/history" class="item" v-if="currentUser.profile.usertype === 'Buyer'">History</router-link>
+          <div v-if="currentUser.profile.usertype === 'Buyer'">
+            <router-link to="/history" class="item" >History</router-link>
           </div>
           
           <router-link to="/profile" class="item">Profile</router-link>

@@ -3,13 +3,15 @@
             <td>{{ this.order.name}}</td>
             <td>{{ this.order.description}}</td>
             <td>{{ this.order.price}}</td>
-            <td>{{ this.order.address}}</td>
-            <td> <input
+            <td v-if="currentUser.profile.usertype === 'Seller'">{{ this.order.address}}</td>
+            <td v-if="currentUser.profile.usertype === 'Seller'"> <input
             type="checkbox"
             readOnly
             v-bind:checked="!!this.order.checked"
             @click="toggleChecked"
             /> </td>
+            <td v-if="currentUser.profile.usertype === 'Buyer' && this.order.checked"> Order Accepted! </td>
+            <td v-if="currentUser.profile.usertype === 'Buyer' && !this.order.checked"> Not accepted yet! </td>
         </tr>   
 </template>
 
@@ -29,6 +31,11 @@
         toggleChecked() {
         Meteor.call('orders.setIsChecked', this.order._id, !this.order.checked);
         },
-    }
+    },
+    meteor: {
+    currentUser() {
+    return Meteor.user();
+}
+  }
 };
 </script>
