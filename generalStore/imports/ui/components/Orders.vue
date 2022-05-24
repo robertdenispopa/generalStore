@@ -1,8 +1,14 @@
 <template>
     <div class="app">
         <div class="main">
-            <div class ="title-page">
+            <div class ="title-page" v-if="currentUser.profile.usertype === 'Seller'">
                 <h2>Orders
+                <span v-if="incompleteCount > 0">({{incompleteCount}})</span>
+                </h2>
+            </div>
+
+            <div class ="title-page" v-if="currentUser.profile.usertype === 'Buyer'">
+                <h2>History
                 <span v-if="incompleteCount > 0">({{incompleteCount}})</span>
                 </h2>
             </div>
@@ -25,8 +31,8 @@
                     <th> Name </th>
                     <th> Description </th>
                     <th> Price </th>
-                    <th> Address </th>
-                    <th> Completed </th>
+                    <th v-if="currentUser.profile.usertype === 'Seller'"> Address </th>
+                    <th> Accepted </th>
                 </tr>
                 <Order 
                 class="product"
@@ -72,8 +78,12 @@ export default {
         }
     
         const hideCompletedFilter = { checked: { $ne: true } };
-        
-        const userFilter = this.currentUser ? { userId: this.currentUser._id } : {};
+        let userFilter;
+
+        if(this.currentUser.profile.usertype === 'Seller')
+         userFilter = this.currentUser ? { userId: this.currentUser._id} : {};
+        else 
+         userFilter = this.currentUser ? { buyerId: this.currentUser._id} : {};
         
         const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter };
         
@@ -85,7 +95,10 @@ export default {
         ).fetch();
     },
     incompleteCount() {
-    return OrdersCollection.find({ checked: { $ne: true }, userId: this.currentUser._id }).count();
+        if(this.currentUser.profile.usertype === 'Seller')
+            return OrdersCollection.find({ checked: { $ne: true }, userId: this.currentUser._id }).count();
+        else   
+            return OrdersCollection.find({ checked: { $ne: true }, buyerId: this.currentUser._id }).count();  
     },
     
 }

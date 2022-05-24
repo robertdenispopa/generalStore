@@ -16,6 +16,7 @@ Meteor.methods({
         createdAt: new Date,
         userId: toSend.userId,
         address: toSend.address,
+        buyerId: toSend.buyerId
     })
     },
     

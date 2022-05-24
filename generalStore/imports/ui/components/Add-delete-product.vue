@@ -7,7 +7,7 @@
         <button class="delete" @click="deleteThisProduct">×</button>
             </td>
             <td v-if="currentUser.profile.usertype === 'Buyer'">
-                <button class="add" @click="addThisProduct" >Add</button>
+                <button class="add" @click="addThisProduct" >Place order</button>
             </td>
         </tr>   
 </template>
@@ -28,10 +28,11 @@
                     name:this.product.name,
                     description:this.product.description,
                     price:this.product.price,
-                    userOfItem:this.product.userId
+                    userId:this.product.userId,
+                    buyerId:this.currentUser._id
                 };
-        
-            Meteor.call('history.insert', toSend);
+            console.log(toSend);
+            Meteor.call('orders.insert', toSend);
         },
     },
     meteor:{
